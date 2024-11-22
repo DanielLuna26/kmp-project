@@ -64,5 +64,5 @@ dependencies {
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
 
-    implementation "com.softmoon:ktor-kmm:0.0.1"
+    implementation libs.ktor.kmm
 }

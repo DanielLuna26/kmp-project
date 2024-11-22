@@ -1,15 +1,16 @@
 package com.softmoon.ktorkmm.data.services
 
+import com.softmoon.ktorkmm.data.remote.NetworkClientProvider
 import com.softmoon.ktorkmm.data.response.Launch
-import com.softmoon.ktorkmm.ktorHttpClient
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 
-internal class LaunchService {
-    private val client = ktorHttpClient
+class LaunchService(
+    private val networkClientProvider: NetworkClientProvider
+): BaseService(networkClientProvider) {
 
     suspend fun getLaunches(): ArrayList<Launch> {
-        val response = client.get("https://api.spacexdata.com/v5/launches")
+        val response = client.get("/v5/launches")
         return response.body()
     }
 }
